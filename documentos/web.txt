@@ -1,0 +1,22 @@
+# Pagina Web
+
+## Servicios que te hacen todo por ti, respecto a la venta.
+
+* **Shopify** (5-30 dls)
+* **Wix** (17-30 dls)
+* **Squarespace** (16-23 dls)
+
+Cada uno tiene sus precios dependiendo las necesidades
+Wix y Shopify podrían ser las mejores alternativas.
+
+## Para hacer una pagina web sencilla
+
+Paso 1. Comprar dominio https://support.google.com/mail/answer/56256?hl=en#
+
+Paso 2. (optativo) mail con dominio https://support.google.com/mail/answer/56256?hl=en#
+
+Paso 3. Descargar un template gratis de HTML https://html5up.net/
+
+Paso 4. Personalizarlo con logo y con las fuentes.
+
+Paso 5. Subirlo con Firebase studio (es gratis) https://www.youtube.com/watch?v=gtcUIQNhgyQ
