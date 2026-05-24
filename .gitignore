@@ -67,3 +67,23 @@ node_modules/
 
 # dataconnect generated files
 .dataconnect
+
+
+# Carpeta de Videos
+Videos/
+
+# Avoid videos being added to git
+*.mp4
+*.avi
+*.mov
+
+# vs code
+.vscode/
+
+# audio
+*.mp3
+*.wav
+
+# Dir Identidad_Visual 
+Identidad Visual/Legacy/
+Identidad Visual/Video Intro/
