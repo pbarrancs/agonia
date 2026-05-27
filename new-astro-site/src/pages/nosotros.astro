@@ -1,106 +1,60 @@
 ---
-// src/pages/nosotros.astro
-// All five sections from the current live site — content copied verbatim from public/index.html.
-
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout title="Nosotros — agonia" description="Somos una red autosustentable de atletas no comerciales.">
+<Layout title="Nosotros — agonia" description="Una red de atletas no comerciales y una plataforma independiente.">
   <Nav slot="nav" />
 
   <section class="page-section" id="somos">
     <h1 class="font-titulo">Somos</h1>
     <p class="font-cuerpo">
-      Una red autosustentable de atletas no comerciales, una plataforma
-      independiente de apoyo, un espacio comunitario de difusión. Gente que
-      no sabe estarse quieta.
+      Una red de atletas no comerciales, una plataforma independiente, un espacio
+      comunitario. Queremos ver más gente escalando, surfeando, patinando y pedaleando
+      en México y para eso existe esto.
     </p>
-  </section>
-
-  <section class="page-section" id="mision">
-    <h1 class="font-titulo">Misión</h1>
     <p class="font-cuerpo">
-      Queremos ver más atletas haciendo deportes no comerciales —escalada, surf,
-      skate, ciclismo y más— en México. Junto a la comunidad, creamos este
-      espacio de difusión desde donde visibilizar el progreso, circulando equipo
-      de video, interviniendo el contenido audiovisual e involucrándonos en la
-      protección de los espacios naturales que permiten nuestras pasiones.
+      Visibilizamos el progreso, circulamos equipo de video, intervenimos contenido
+      audiovisual y nos involucramos en la protección de los espacios donde
+      practicamos. Apoyamos a todos los atletas sin importar el nivel o el proyecto.
     </p>
-  </section>
-
-  <section class="page-section" id="vision">
-    <h1 class="font-titulo">Visión</h1>
-    <p class="font-cuerpo">
-      Buscamos convertirnos en un espacio comunitario donde todos los atletas
-      encuentren un albergue para expandir su práctica. Además, queremos
-      inspirar a otras comunidades de deportes alternativos en Latinoamérica a
-      impulsar el talento local.
-    </p>
-  </section>
-
-  <section class="page-section" id="no-negociables">
-    <h1 class="font-titulo">No negociables</h1>
-
-    <div class="non-negotiable">
-      <h4 class="font-subtitulo">Try Hard</h4>
-      <p class="font-cuerpo">
-        Apoyamos a todos los atletas sin importar el nivel o la dificultad de
-        sus proyectos. Valoramos el continúo esfuerzo y las ganas de seguir
-        aprendiendo.
-      </p>
-    </div>
 
     <div class="non-negotiable">
       <h4 class="font-subtitulo">El crag es primero</h4>
       <p class="font-cuerpo">
-        Fomentamos el cuidado de las zonas donde practicamos deportes,
-        visibilizándolas y protegiéndolas. Creemos que un ecosistema habitado
-        por escaladores es un ecosistema vivo — y que la mejor defensa de un
-        espacio natural es una comunidad que lo usa, lo conoce y lo cuida.
-        Frente a la presión del desarrollo urbano, la autogestión colectiva es
-        nuestra respuesta. Además, promovemos una producción responsable a
-        través de colecciones limitadas y prácticas como el upcycling,
-        minimizando el impacto ambiental en cada paso.
+        Un ecosistema habitado por escaladores es un ecosistema vivo. La mejor defensa
+        de un espacio natural es una comunidad que lo usa, lo conoce y lo cuida.
       </p>
     </div>
 
     <div class="non-negotiable">
-      <h4 class="font-subtitulo">Muerte al influencer</h4>
+      <h4 class="font-subtitulo">Anti influencer</h4>
       <p class="font-cuerpo">
-        Priorizamos el crecimiento real del deporte sobre el performance
-        digital. No nos guíamos por el número de likes ni seguidores, nos
-        interesan los atletas que están realmente involucrados en el deporte.
+        El crecimiento real del deporte sobre el performance digital. No nos guiamos por
+        likes ni seguidores.
       </p>
     </div>
 
     <div class="non-negotiable">
       <h4 class="font-subtitulo">Aprieta y aguanta</h4>
       <p class="font-cuerpo">
-        Celebramos el esfuerzo, la capacidad de adaptación y la persistencia
-        frente a cualquier adversidad. Reconocemos el contexto en el que los
-        atletas de Latinoamérica se desarrollan y valoramos el esfuerzo por
-        practicar un deporte a pesar de las dificultades.
+        Sabemos el contexto en el que los atletas de Latinoamérica se desarrollan.
+        Valoramos practicar el deporte a pesar de las dificultades.
       </p>
     </div>
+
+    <p class="font-cuerpo">
+      El proyecto se sostiene con producción responsable: colecciones limitadas y
+      upcycling. Con recursos propios y la comunidad.
+    </p>
   </section>
 
-  <section class="page-section" id="como-le-hacemos">
-    <h1 class="font-titulo">Cómo le hacemos</h1>
-    <p class="font-cuerpo">
-      Este proyecto se hace desde y para la comunidad, con recursos propios y
-      la pasión por seguir creciendo en nuestro deporte. A través de la
-      producción responsable de ropa con colecciones limitadas y prácticas como
-      el upcycling, financiamos y sustentamos la realización multimedia de los
-      proyectos.
-    </p>
+  <section class="page-section page-section--dog" aria-label="Ilustración Perrito">
     <img
       src="/assets/images/Ilustraciones/Perrito_03/P3_PNG_/P3_BlancoNegro_png/Perrito3_blanco_FondoOscuro.png"
-      alt="perrito malo"
-      width="140"
-      height="178"
-      style="margin: 1.5rem auto 0;"
+      alt="Ilustración Perrito"
+      loading="lazy"
     />
   </section>
 

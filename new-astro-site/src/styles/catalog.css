@@ -82,6 +82,15 @@
   letter-spacing: 0.04em;
 }
 
+.product-card__design-name {
+  font-family: "Syne Mono", monospace;
+  color: #b0b0b0;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: -0.2rem;
+}
+
 .product-card__price {
   font-family: "Syne Mono", monospace;
   color: #fcfcfc;

@@ -7,6 +7,16 @@ based in Mexico. The site communicates the brand's identity, mission, and values
 to the climbing and outdoor community. There is no e-commerce or purchasing flow —
 the catalog is display-only.
 
+## Latest Updates (2026-05-27)
+
+- Catalog card headings use UI-level display-name mapping (no manual edits to `productos.csv`).
+- Catalog section titles use collection display names only: `Fall T`, `Cadenas`, `Back Logo`, `Lágrima`.
+- Home page media section label is `Clips` (previously `Videos`).
+- Home hero keeps only one CTA card (`Ver catálogo`); the extra `Nosotros` card was removed.
+- Nosotros page now includes updated manifesto copy and a centered Perrito illustration block at the bottom.
+- Current Perrito image source:
+  `/assets/images/Ilustraciones/Perrito_03/P3_PNG_/P3_BlancoNegro_png/Perrito3_blanco_FondoOscuro.png`.
+
 ---
 
 ## Brand context
@@ -22,14 +32,14 @@ the catalog is display-only.
 
 ## Current stack
 
-| Tool                       | Version / Source                               | Role                                                        |
-| -------------------------- | ---------------------------------------------- | ----------------------------------------------------------- |
+| Tool                 | Version / Source                             | Role                                                     |
+| -------------------- | -------------------------------------------- | -------------------------------------------------------- |
 | **Astro**            | 4.16.x (`^4.16.0`)                           | Static site framework — builds to `new-astro-site/dist/` |
-| **CSS**              | Plain CSS (no framework)                       | Layout, typography, brand colors                            |
-| **Google Fonts**     | `New Rocker`, `Nova Cut`, `Syne Mono`    | Brand typography (loaded via CDN)                           |
-| **Font Awesome 5**   | Bundled locally in `public/assets/webfonts/` | Social and UI icons                                         |
-| **Vanilla JS**       | Inline `<script>` blocks in Astro components | Catalog interactivity (color/size filtering)                |
-| **Firebase Hosting** | Project:`agonia-255fe`                       | Static site deployment and CDN                              |
+| **CSS**              | Plain CSS (no framework)                     | Layout, typography, brand colors                         |
+| **Google Fonts**     | `New Rocker`, `Nova Cut`, `Syne Mono`        | Brand typography (loaded via CDN)                        |
+| **Font Awesome 5**   | Bundled locally in `public/assets/webfonts/` | Social and UI icons                                      |
+| **Vanilla JS**       | Inline `<script>` blocks in Astro components | Catalog interactivity (color/size filtering)             |
+| **Firebase Hosting** | Project:`agonia-255fe`                       | Static site deployment and CDN                           |
 
 No React, no Vue, no Svelte. No Tailwind, no PostCSS. No jQuery.
 
@@ -87,8 +97,8 @@ agonia/                                   ← repo root
 │       │   └── ProductCard.astro         ← catalog card: color swatches, dynamic size badges, OOS
 │       ├── pages/
 │       │   ├── index.astro               ← homepage — hero tagline "marca independiente"
-│       │   ├── nosotros.astro            ← brand identity: Somos, Misión, Visión, No negociables
-│       │   ├── catalogo.astro            ← CSV-driven catalog; 8 models grouped by diseño
+│       │   ├── nosotros.astro            ← manifesto content + bottom Perrito illustration
+│       │   ├── catalogo.astro            ← CSV-driven catalog with UI display-name mapping
 │       │   └── aviso-de-privacidad.astro ← legal notice (Pablo Barranco Soto, Mayo 2026)
 │       └── styles/
 │           ├── global.css                ← brand tokens, typography, base layout
@@ -133,19 +143,19 @@ Run both scripts after any inventory change, then rebuild and deploy.
 
 ## Migration plan — Phase checklist
 
-- [X] **Phase 1 — Setup:** Created `new-astro-site/` with `package.json` and
-  `astro.config.mjs` (output: static).
-- [X] **Phase 2 — Content migration:** Built Layout, Nav, Footer components and styles.
-  Migrated all existing HTML content into Astro pages (nosotros.astro, index.astro).
-- [X] **Phase 3 — New features:** Catalog page (CSV-driven), aviso de privacidad page,
-  active nav tab logic, footer link, per-color dynamic size filtering in ProductCard.
-- [X] **Phase 4 — Assets:** All images and Font Awesome files copied into
-  `new-astro-site/public/assets/`. All src paths updated in components.
-- [X] **Phase 5 — Swap** ✅ **(completed 2026-05-26):**
-  Updated `firebase.json` to point to `new-astro-site/dist/`. Deployed to Firebase.
-  Live at https://agonia-255fe.web.app. `public/index.html` retained as backup
-  (do not delete before 2026-06-02).
-  Verified `.firebaserc` still references `agonia-255fe`.
+- [x] **Phase 1 — Setup:** Created `new-astro-site/` with `package.json` and
+      `astro.config.mjs` (output: static).
+- [x] **Phase 2 — Content migration:** Built Layout, Nav, Footer components and styles.
+      Migrated all existing HTML content into Astro pages (nosotros.astro, index.astro).
+- [x] **Phase 3 — New features:** Catalog page (CSV-driven), aviso de privacidad page,
+      active nav tab logic, footer link, per-color dynamic size filtering in ProductCard.
+- [x] **Phase 4 — Assets:** All images and Font Awesome files copied into
+      `new-astro-site/public/assets/`. All src paths updated in components.
+- [x] **Phase 5 — Swap** ✅ **(completed 2026-05-26):**
+      Updated `firebase.json` to point to `new-astro-site/dist/`. Deployed to Firebase.
+      Live at https://agonia-255fe.web.app. `public/index.html` retained as backup
+      (do not delete before 2026-06-02).
+      Verified `.firebaserc` still references `agonia-255fe`.
 
 ---
 
@@ -188,14 +198,14 @@ Note: the Excel inventory uses `Morado` (not `Morada`). `sync_oos.py` bridges th
 
 ### Old stack (pre-migration, used until 2026-05-26)
 
-| Tool                        | Role                                                                                 |
-| --------------------------- | ------------------------------------------------------------------------------------ |
+| Tool                  | Role                                                                               |
+| --------------------- | ---------------------------------------------------------------------------------- |
 | **HTML5**             | Single-page static markup (`public/index.html`)                                    |
 | **CSS / Sass (SCSS)** | Strata by HTML5UP (CCA 3.0) + custom brand styles; source in `public/assets/sass/` |
-| **Google Fonts**      | Brand typography (same fonts as current)                                             |
+| **Google Fonts**      | Brand typography (same fonts as current)                                           |
 | **Font Awesome 5**    | Bundled locally in `public/assets/webfonts/`                                       |
-| **jQuery + Poptrox**  | DOM utilities and lightbox, inherited from the HTML5UP Strata base template          |
-| **Firebase Hosting**  | Same project (`agonia-255fe`); serving from `public/`                            |
+| **jQuery + Poptrox**  | DOM utilities and lightbox, inherited from the HTML5UP Strata base template        |
+| **Firebase Hosting**  | Same project (`agonia-255fe`); serving from `public/`                              |
 
 ### Old file structure (web files)
 
@@ -237,6 +247,6 @@ public/
 ## Upcoming Tasks
 
 - [ ] **Inventory update flow:** refactor `ventas.csv` to mirror the structure of
-  `inventario_agonia.xlsx` so that updating inventory from sales data is more
-  transparent and straightforward. The goal is a single simple process to keep
-  stock counts accurate after each sale.
+      `inventario_agonia.xlsx` so that updating inventory from sales data is more
+      transparent and straightforward. The goal is a single simple process to keep
+      stock counts accurate after each sale.

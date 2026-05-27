@@ -60,6 +60,28 @@ for (const p of productMap.values()) {
 // Sort design groups numerically
 const designGroups = [...designMap.entries()].sort((a, b) => Number(a[0]) - Number(b[0]));
 
+const designDisplayNames: Record<string, string> = {
+  '1': 'Fall T',
+  '2': 'Cadenas',
+  '3': 'Back Logo',
+  '4': 'Lágrima',
+};
+
+const productDisplayNames: Record<string, string> = {
+  'Playera Sólida - Diseño 1': 'Fall T Sólida',
+  'Playera Deslavada - Diseño 1': 'Fall T Deslavada',
+  'Playera Sólida - Diseño 2': 'Cadenas Sólida',
+  'Playera Deslavada - Diseño 2': 'Cadenas Deslavada',
+  'Top - Diseño 2': 'Top Cadenas',
+  'Playera Deslavada - Diseño 3': 'Back Logo Deslavada',
+  'Top - Diseño 3': 'Top Back Logo',
+  'Playera Sólida - Diseño 4': 'Lágrima',
+};
+
+function getDisplayName(nombre: string): string {
+  return productDisplayNames[nombre] ?? nombre;
+}
+
 // Price lookup — keyed by modelo prefix + design number
 function getPrecio(modelo: string): string {
   if (modelo === 'solido_1')    return '$500';
@@ -89,10 +111,17 @@ function getPrecio(modelo: string): string {
 
   {designGroups.map(([num, group]) => (
     <section class="design-group">
-      <h2 class="design-group__title font-subtitulo">Diseño {num}</h2>
+      <h2 class="design-group__title font-subtitulo">
+        {designDisplayNames[num] ?? 'Sin nombre'}
+      </h2>
       <div class="product-grid">
         {group.map(p => (
-          <ProductCard nombre={p.nombre} modelo={p.modelo} items={p.items} precio={getPrecio(p.modelo)} />
+          <ProductCard
+            nombre={getDisplayName(p.nombre)}
+            modelo={p.modelo}
+            items={p.items}
+            precio={getPrecio(p.modelo)}
+          />
         ))}
       </div>
     </section>

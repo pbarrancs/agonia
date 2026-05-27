@@ -4,6 +4,15 @@ Brand presence website for **agonia**, an independent climbing apparel collectiv
 
 > No e-commerce. Display-only catalog. Static site deployed to Firebase Hosting.
 
+## Latest Updates (2026-05-27)
+
+- Catalog card product names are mapped in UI to brand display names (for example: `Fall T Sólida`, `Cadenas Deslavada`, `Top Back Logo`) without editing `productos.csv`.
+- Catalog section headers now show only display collection names (`Fall T`, `Cadenas`, `Back Logo`, `Lágrima`) without `Diseño X` prefixes.
+- Home page section title changed from `Videos` to `Clips`.
+- Home keeps a single CTA (`Ver catálogo`) and no secondary `Nosotros` card in the hero box.
+- Nosotros page includes updated manifesto content plus a bottom dog illustration loaded from:
+  `/assets/images/Ilustraciones/Perrito_03/P3_PNG_/P3_BlancoNegro_png/Perrito3_blanco_FondoOscuro.png`.
+
 ---
 
 ## Tech Stack

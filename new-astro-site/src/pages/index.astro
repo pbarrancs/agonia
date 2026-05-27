@@ -5,6 +5,12 @@
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+
+const videos = [
+  { id: 'zJ-yFbPegas', title: 'agonia video 1' },
+  { id: '4Iq-gC5wlFU', title: 'agonia video 2' },
+  { id: 'dBeN1jI2NRM', title: 'agonia video 3' },
+];
 ---
 
 <Layout title="agonia" description="Colectivo independiente de ropa de escalada — México">
@@ -23,9 +29,44 @@ import Footer from '../components/Footer.astro';
 
     <div class="hero__cta">
       <a href="/catalogo" class="btn btn--primary">Ver catálogo</a>
-      <a href="/nosotros" class="btn btn--secondary">Quiénes somos</a>
     </div>
   </div>
 
+  <section class="home-videos" aria-labelledby="home-videos-title">
+    <h2 id="home-videos-title" class="font-subtitulo">Clips</h2>
+    <div class="video-grid">
+      {videos.map(video => (
+        <button class="video-thumb" type="button" data-video-id={video.id} aria-label={`Reproducir ${video.title}`}>
+          <img
+            src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
+            alt={`Miniatura de ${video.title}`}
+            loading="lazy"
+          />
+          <span class="video-thumb__play" aria-hidden="true">▶</span>
+        </button>
+      ))}
+    </div>
+  </section>
+
   <Footer slot="footer" />
 </Layout>
+
+<script>
+  document.querySelectorAll('.video-thumb').forEach(button => {
+    button.addEventListener('click', () => {
+      const id = button.dataset.videoId;
+      if (!id || button.dataset.loaded === 'true') return;
+
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0`;
+      iframe.title = 'YouTube video player';
+      iframe.loading = 'lazy';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+      iframe.allowFullscreen = true;
+
+      button.dataset.loaded = 'true';
+      button.replaceWith(iframe);
+    });
+  });
+</script>
