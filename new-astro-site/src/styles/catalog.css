@@ -1,0 +1,222 @@
+/*
+ * catalog.css
+ * Product grid layout, cards, color swatches, size badges, and OOS state.
+ */
+
+/* ─── Catalog page layout ─────────────────────────────────────────────────── */
+.catalog-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.catalog-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.catalog-header p {
+  font-size: 0.85rem;
+  color: #888;
+  font-family: "Syne Mono", monospace;
+}
+
+/* ─── Product grid ────────────────────────────────────────────────────────── */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 900px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ─── Product card ────────────────────────────────────────────────────────── */
+.product-card {
+  background-color: #222;
+  border: 1px solid #2a2a2a;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card__image-wrap {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background-color: #1a1a1a;
+  position: relative;
+}
+
+.product-card__image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-card__image-wrap img {
+  transform: scale(1.03);
+}
+
+.product-card__body {
+  padding: 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.product-card__name {
+  font-family: "Nova Cut", system-ui;
+  color: var(--color-subtitulo);
+  font-size: 1.1rem;
+  letter-spacing: 0.04em;
+}
+
+.product-card__price {
+  font-family: "Syne Mono", monospace;
+  color: #fcfcfc;
+  font-size: 0.95rem;
+  margin-top: 0.1rem;
+  margin-bottom: 0.25rem;
+}
+
+/* ─── Color swatches ──────────────────────────────────────────────────────── */
+.product-card__colors {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.product-card__colors-label {
+  font-size: 0.7rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-right: 0.25rem;
+}
+
+.swatch {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid #444;
+  flex-shrink: 0;
+  position: relative;
+}
+
+/* Map brand colour names to CSS colours */
+.swatch[data-color="Negro"]   { background-color: #1a1a1a; border-color: #666; }
+.swatch[data-color="Blanco"]  { background-color: #f5f5f5; }
+.swatch[data-color="Gris"]    { background-color: #888; }
+.swatch[data-color="Carbon"]  { background-color: #3a3a3a; border-color: #666; }
+.swatch[data-color="Rosa"]    { background-color: #e07a99; }
+.swatch[data-color="Verde"]   { background-color: #4a7c59; }
+.swatch[data-color="Marino"]  { background-color: #1a3a5c; }
+.swatch[data-color="Aqua"]    { background-color: #4fc3c3; }
+.swatch[data-color="Morada"]  { background-color: #7a4a9e; }
+.swatch[data-color="Navy"]    { background-color: #1a2a5a; }
+
+/* Swatch as button — reset browser defaults */
+button.swatch {
+  cursor: pointer;
+  border: 1px solid #444;
+  padding: 0;
+  background-color: #444;
+}
+
+button.swatch:hover {
+  outline: 2px solid var(--color-subtitulo);
+  outline-offset: 1px;
+}
+
+button.swatch--active {
+  outline: 2px solid var(--color-subtitulo);
+  outline-offset: 2px;
+}
+
+/* OOS swatch — diagonal strikethrough */
+button.swatch--oos {
+  opacity: 0.35;
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+}
+button.swatch--oos::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    transparent 42%,
+    #fff 42%,
+    #fff 58%,
+    transparent 58%
+  );
+  opacity: 0.7;
+}
+button.swatch--oos:hover {
+  outline: none;
+}
+
+/* ─── Design group sections ───────────────────────────────────────────────── */
+.design-group {
+  margin-bottom: 4rem;
+}
+
+.design-group__title {
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+/* ─── Size badges ─────────────────────────────────────────────────────────── */
+.product-card__sizes {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.size-badge {
+  font-family: "Syne Mono", monospace;
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border: 1px solid #555;
+  border-radius: 2px;
+  color: var(--color-cuerpo);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.size-badge--oos {
+  color: #555;
+  border-color: #333;
+  text-decoration: line-through;
+}
+
+/* ─── OOS badge on image ──────────────────────────────────────────────────── */
+.product-card__oos-badge {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #888;
+  font-family: "Syne Mono", monospace;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 3px 8px;
+  border-radius: 2px;
+}

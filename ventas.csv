@@ -1,0 +1,66 @@
+nombre,producto,color,talla,tipo,gym,entregada,revisar
+Pablo Reveles,Playera,Morado,G,Tipo 1,Potrero,Si,
+Santiago Rubianes,Playera,Aqua,G,Tipo 2,Satelite,Si,
+Gabo Barranco,Playera,Blanco,G,Tipo 1,Satelite,Si,
+Pao,Playera,Carbon,XS,Tipo 1,Satelite,Si,
+Querti,Playera,,XL,Tipo 1,Satelite,Si,Si
+Cesar Barrueta,Playera,Gris,M,Tipo 3,Satelite,Si,
+Gabo Romero,Playera,Negro,M,Tipo 1,Satelite,Si,
+Jorge,Playera,Negro,M,Tipo 1,Satelite,Si,
+Wiz,Playera,Morado,G,Tipo 2,Satelite,Si,
+Leo Magallanes,Playera,Morado,M,Tipo 1,Satelite,Si,
+Tonino,Playera,Morado,M/L,Tipo 1,Satelite,Si,
+Caro,Playera,Negro,G,Tipo 1,Satelite,Si,
+Mateo Razo,Playera,Negro,M,Tipo 1,Satelite,Si,
+Diego Minutti,Playera,Negro,M,Tipo 4,Satelite,Si,
+Nico Razo,Playera,Negro,S,Tipo 3,Satelite,Si,
+Vic,Playera,Rosa,S,Tipo 2,Satelite,Si,
+Javi,Playera,Rosa,S,Tipo 1,Satelite,Si,
+Ale,Sudadera,Morado,S,Tipo 3,Satelite,Si,Si
+Erin,Playera,Aqua,M/L,Tipo 2,Valle,Si,
+Erin,Playera,Blanco,M,Tipo 1,Valle,Si,
+Erin,Playera,Blanco,S,Tipo 4,Valle,Si,
+Cheko Ripps,Playera,Gris,G,Tipo 1,Valle,Si,
+Hash,Playera,Gris,G,Tipo 3,Valle,Si,
+Dan,Playera,Morado,G,Tipo 2,Valle,Si,
+Sanitago de Alba,Playera,Negro,G,Tipo 1,Valle,Si,
+Orlando,Playera,Negro,M,,Valle,Si,Si
+Hash,Playera,Negro,XL,Tipo 3,Valle,Si,
+Ale,Playera,Blanco,S,Tipo 1,Satelite,Si,
+Neto,Playera,Negro,M,Tipo 1,Satelite,Si,
+Saul,Playera,Rosa,M,Tipo 2,Satelite,Si,
+Inaki,Playera,Aqua,M/L,Tipo 2,Satelite,No,
+Baplo,Playera,Morado,G,Tipo 1,Satelite,No,
+Baplo,Playera,Blanco,S/M,Tipo 4,Satelite,No,
+Ary,Playera,Negro,XS,Tipo 4,Satelite,No,Si
+Pink,Playera,Rosa,M,Tipo 1,Satelite,No,
+Dodo,Playera,Carbon,XL,Tipo 2,Satelite,No,
+Dani Vaca,Tank Top,,,Tipo 2,Satelite,No,Si
+Mikel,Playera,Negro,M,,Escandon,No,Si
+Paco,Playera,Negro,M,,Satelite,No,Si
+Iker,Playera,Verde,M/L,Tipo 3,Satelite,No,
+Eli Casares,Playera,Gris,S,,Satelite,No,Si
+Eli Casares,Playera,Verde,S,Tipo 2,Satelite,No,
+Javier Cors,Playera,Blanco,M/L,Tipo 4,Escandon,Pendiente,
+Matias,Playera,Morado,G,Tipo 1,Escandon,Pendiente,
+Diego Molero,Playera,Negro,G,Tipo 1,Escandon,Pendiente,
+Jaza,,,,,Escandon,Pendiente,Si
+Chris,Playera,,M,Tipo 1,Onix,Pendiente,Si
+Eric del Angel,Playera,,G,,Onix,Pendiente,Si
+Ian Portman,Playera,Morado,G,Tipo 1,Potrero,Pendiente,
+Tarzan,Playera,Gris,M,Tipo 1,Potrero,Pendiente,
+JP Barragan,Playera,Morado,M,Tipo 1,Queretaro,Pendiente,
+Pablo Rodriguez,Playera,,,Tipo 1,Queretaro,Pendiente,Si
+Takutz,Playera,Rosa,M,Tipo 1,Roca,Pendiente,
+Meman,Playera,,,Tipo 2,Rock Solid,Pendiente,Si
+Abraham Chacra,Playera,Negro,M,,Satelite,Pendiente,Si
+Nico Razo,Playera,Morado,M,Tipo 1,Satelite,Pendiente,
+Santiago Vaca,Playera,Morado,M,Tipo 1,Satelite,Pendiente,
+Chepe Cano,Playera,Morado,M,Tipo 1,Satelite,Pendiente,
+Vic,Playera,Morado,S,Tipo 1,Satelite,Pendiente,
+Memo Wide,Playera,Morado,XL,Tipo 1,Satelite,Pendiente,
+Jair Moreno,Playera,,,Tipo 1,Satelite,Pendiente,Si
+Pesta,Tank Top,,,Tipo 3,Satelite,Pendiente,Si
+Fede,Playera,Gris,S,Tipo 3,Satelite,Pendiente,
+Mariano,Playera,Gris,M,Tipo 1,Valle,Pendiente,
+Julian,Playera,Negro,M,Tipo 4,Valle,Pendiente,

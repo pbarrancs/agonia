@@ -1,0 +1,46 @@
+---
+// src/components/Footer.astro
+// Site-wide footer — social icons, Aviso de Privacidad link, copyright.
+---
+
+<footer class="site-footer">
+  <div class="site-footer__logo">
+    <a href="/" aria-label="agonia — inicio">
+      <img
+        src="/assets/images/Logos/Logo_horizontal/PNG_/logo_blanco.png"
+        alt="agonia"
+      />
+    </a>
+  </div>
+
+  <ul class="site-footer__icons" aria-label="Redes sociales">
+    <li>
+      <a
+        href="https://www.instagram.com/___agonia/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Instagram de agonia"
+      >
+        <i class="fab fa-instagram" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li>
+      <a
+        href="https://www.youtube.com/@agon_ia"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="YouTube de agonia"
+      >
+        <i class="fab fa-youtube" aria-hidden="true"></i>
+      </a>
+    </li>
+  </ul>
+
+  <ul class="site-footer__links" aria-label="Enlaces de pie de página">
+    <li><a href="/aviso-de-privacidad">Aviso de Privacidad</a></li>
+  </ul>
+
+  <p class="site-footer__copy font-cuerpo">
+    &copy; {new Date().getFullYear()} agonia — todos los derechos reservados
+  </p>
+</footer>

@@ -1,0 +1,37 @@
+---
+// src/components/Nav.astro
+// Top navigation bar — 3 tabs with active-state highlighting via Astro.url.pathname.
+
+const pathname = Astro.url.pathname;
+
+const links = [
+  { href: '/catalogo', label: 'Catálogo' },
+  { href: '/nosotros', label: 'Nosotros' },
+];
+
+function isActive(href: string): boolean {
+  if (href === '/') return pathname === '/';
+  return pathname.startsWith(href);
+}
+---
+
+<nav class="site-nav" aria-label="Navegación principal">
+  <div class="site-nav__inner">
+    <a href="/" class="site-nav__logo" aria-label="agonia — inicio">
+      <img
+        src="/assets/images/Logos/Logo_A_lagrima/A_PNG_/LogoA_lagrima_blanco.png"
+        alt="agonia"
+      />
+    </a>
+
+    <ul class="site-nav__links" role="list">
+      {links.map(({ href, label }) => (
+        <li>
+          <a href={href} class:list={['', { active: isActive(href) }]}>
+            {label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</nav>

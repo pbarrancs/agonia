@@ -1,0 +1,49 @@
+---
+// src/layouts/Layout.astro
+// Base HTML shell for every page on the site.
+
+import '../styles/global.css';
+
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'agonia',
+  description = 'Colectivo independiente de ropa de escalada — México',
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Favicon -->
+    <link rel="icon" href="/assets/a_icono.ico" type="image/x-icon" />
+
+    <!-- Brand fonts — Google Fonts CDN -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=New+Rocker&family=Nova+Cut&family=Syne+Mono&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome 5 (locally bundled) -->
+    <link rel="stylesheet" href="/assets/css/fontawesome-all.min.css" />
+
+    <!-- Global brand styles (Vite-bundled via frontmatter import) -->
+  </head>
+  <body>
+    <slot name="nav" />
+    <main>
+      <slot />
+    </main>
+    <slot name="footer" />
+  </body>
+</html>

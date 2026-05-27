@@ -1,0 +1,102 @@
+---
+// src/pages/catalogo.astro
+// Product catalog page — reads productos.csv at build time, groups by modelo,
+// then groups product cards into sections per diseño number.
+
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import ProductCard from '../components/ProductCard.astro';
+import '../styles/catalog.css';
+
+// Vite ?raw import bundles the file as a string at build time — no runtime I/O
+import rawCsv from '../data/productos.csv?raw';
+
+// Parse CSV manually — no external packages
+// Normalize CRLF → LF so Windows-written files don't leave \r on the last column
+const lines = rawCsv.replace(/\r\n/g, '\n').replace(/\r/g, '\n').trim().split('\n');
+const headers = lines[0].split(',');
+
+interface Row {
+  nombre: string;
+  modelo: string;
+  color: string;
+  talla: string;
+  disponible: boolean;
+  imagen: string;
+}
+
+const rows: Row[] = lines.slice(1).map(line => {
+  const cols = line.split(',');
+  return {
+    nombre:     cols[headers.indexOf('nombre')]     ?? '',
+    modelo:     cols[headers.indexOf('modelo')]     ?? '',
+    color:      cols[headers.indexOf('color')]      ?? '',
+    talla:      cols[headers.indexOf('talla')]      ?? '',
+    disponible: cols[headers.indexOf('disponible')] === 'true',
+    imagen:     cols[headers.indexOf('imagen')]     ?? '',
+  };
+});
+
+// Group rows by modelo while preserving insertion order
+const productMap = new Map<string, { nombre: string; modelo: string; items: Row[] }>();
+for (const row of rows) {
+  if (!productMap.has(row.modelo)) {
+    productMap.set(row.modelo, { nombre: row.nombre, modelo: row.modelo, items: [] });
+  }
+  productMap.get(row.modelo)!.items.push(row);
+}
+
+interface Product { nombre: string; modelo: string; items: Row[] }
+
+// Group products by design number (last segment of modelo: lisa_1 → '1')
+const designMap = new Map<string, Product[]>();
+for (const p of productMap.values()) {
+  const num = p.modelo.split('_').pop() ?? '?';
+  if (!designMap.has(num)) designMap.set(num, []);
+  designMap.get(num)!.push(p);
+}
+
+// Sort design groups numerically
+const designGroups = [...designMap.entries()].sort((a, b) => Number(a[0]) - Number(b[0]));
+
+// Price lookup — keyed by modelo prefix + design number
+function getPrecio(modelo: string): string {
+  if (modelo === 'solido_1')    return '$500';
+  if (modelo === 'deslavada_1') return '$450';
+  if (modelo === 'solido_2')    return '$450';
+  if (modelo === 'deslavada_2') return '$450';
+  if (modelo === 'top_2')       return '$450';
+  if (modelo === 'solido_3')    return '$450';
+  if (modelo === 'deslavada_3') return '$450';
+  if (modelo === 'top_3')       return '$450';
+  if (modelo === 'solido_4')    return '$550';
+  if (modelo.startsWith('sudadera')) return '$450';
+  return '';
+}
+---
+
+<Layout
+  title="Catálogo — agonia"
+  description="Colección de ropa de escalada de agonia. Colecciones limitadas hechas en México."
+>
+  <Nav slot="nav" />
+
+  <div class="catalog-header">
+    <h1 class="font-titulo">Catálogo</h1>
+    <p>Colecciones limitadas · DM para pedir tu playera</p>
+  </div>
+
+  {designGroups.map(([num, group]) => (
+    <section class="design-group">
+      <h2 class="design-group__title font-subtitulo">Diseño {num}</h2>
+      <div class="product-grid">
+        {group.map(p => (
+          <ProductCard nombre={p.nombre} modelo={p.modelo} items={p.items} precio={getPrecio(p.modelo)} />
+        ))}
+      </div>
+    </section>
+  ))}
+
+  <Footer slot="footer" />
+</Layout>

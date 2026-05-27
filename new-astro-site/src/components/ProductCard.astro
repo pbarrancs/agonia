@@ -1,0 +1,196 @@
+---
+// src/components/ProductCard.astro
+// Renders a single product card for one model, showing all its color/size variants.
+// Clicking a color swatch swaps the image AND filters size badges to that color's availability.
+
+export interface Item {
+  color: string;
+  talla: string;
+  disponible: boolean;
+  imagen: string;
+}
+
+export interface Props {
+  nombre: string;
+  modelo: string;
+  items: Item[];
+  precio: string;
+}
+
+const { nombre, items, precio } = Astro.props;
+
+// Canonical size order
+const sizeOrder = ['XC', 'XS', 'S', 'M', 'G', 'L', 'XL'];
+
+// Build per-color image map (first row per color wins)
+const colorImageMap = new Map<string, string>();
+for (const item of items) {
+  if (!colorImageMap.has(item.color)) {
+    colorImageMap.set(item.color, item.imagen);
+  }
+}
+const colors = [...colorImageMap.keys()];
+
+// All unique sizes across the whole card (sorted)
+const allSizes = [...new Set(items.map(i => i.talla))].sort((a, b) => {
+  const ai = sizeOrder.indexOf(a);
+  const bi = sizeOrder.indexOf(b);
+  if (ai === -1 && bi === -1) return 0;
+  if (ai === -1) return 1;
+  if (bi === -1) return -1;
+  return ai - bi;
+});
+
+// Per-color availability map: { color -> { talla -> disponible } }
+// Serialised to JSON and embedded as a data attribute for the JS runtime.
+const availMap: Record<string, Record<string, boolean>> = {};
+for (const color of colors) {
+  availMap[color] = {};
+  for (const item of items.filter(i => i.color === color)) {
+    // If a talla appears multiple times under the same color, true wins
+    availMap[color][item.talla] = (availMap[color][item.talla] ?? false) || item.disponible;
+  }
+}
+
+// Default selected color: first color that has at least one available size;
+// fall back to the very first color.
+const defaultColor =
+  colors.find(c => Object.values(availMap[c]).some(Boolean)) ?? colors[0];
+
+// Representative image for the default color
+const representativeImage = colorImageMap.get(defaultColor) ?? '';
+
+// Overall OOS: every item across all colors is unavailable
+const allOos = items.every(i => !i.disponible);
+
+function isColorOos(color: string): boolean {
+  return !Object.values(availMap[color] ?? {}).some(Boolean);
+}
+---
+
+<article
+  class="product-card"
+  data-avail={JSON.stringify(availMap)}
+  data-default-color={defaultColor}
+>
+  <div class="product-card__image-wrap">
+    {representativeImage && (
+      <img
+        src={representativeImage}
+        alt={nombre}
+        loading="lazy"
+        class="product-card__img"
+      />
+    )}
+    <!-- OOS overlay: hidden by default, shown by JS when all sizes for selected color are OOS -->
+    <span class="product-card__oos-badge" aria-hidden="true" style={allOos ? '' : 'display:none'}>
+      Agotado
+    </span>
+  </div>
+
+  <div class="product-card__body">
+    <h2 class="product-card__name">{nombre}</h2>
+    <p class="product-card__price">{precio}</p>
+
+    <!-- Color swatches -->
+    <div class="product-card__colors">
+      <span class="product-card__colors-label">Colores</span>
+      {colors.map(color => (
+        <button
+          class:list={[
+            'swatch',
+            { 'swatch--oos': isColorOos(color) },
+            { 'swatch--active': color === defaultColor },
+          ]}
+          data-color={color}
+          data-img={colorImageMap.get(color)}
+          title={isColorOos(color) ? `${color} — agotado` : color}
+          aria-label={isColorOos(color) ? `${color} agotado` : color}
+          aria-pressed={color === defaultColor ? 'true' : 'false'}
+          type="button"
+        ></button>
+      ))}
+    </div>
+
+    <!-- Size badges — rendered for every size; JS toggles swatch--oos per color -->
+    <div class="product-card__sizes">
+      {allSizes.map(talla => (
+        <span
+          class="size-badge"
+          data-talla={talla}
+          aria-label={talla}
+        >
+          {talla}
+        </span>
+      ))}
+    </div>
+  </div>
+</article>
+
+<script>
+  // Runs once (Astro dedupes <script> tags across cards).
+  // For each card: clicking a color swatch updates the image, marks it active,
+  // and refreshes size-badge availability from the embedded JSON map.
+
+  function applyColor(card: HTMLElement, color: string) {
+    const availRaw = card.dataset.avail;
+    if (!availRaw) return;
+    const avail: Record<string, Record<string, boolean>> = JSON.parse(availRaw);
+    const colorMap = avail[color] ?? {};
+
+    // ── Image ──────────────────────────────────────────────────────────────
+    const img = card.querySelector<HTMLImageElement>('.product-card__img');
+    const activeSwatch = card.querySelector<HTMLButtonElement>(`.swatch[data-color="${CSS.escape(color)}"]`);
+    if (img && activeSwatch?.dataset.img) {
+      img.src = activeSwatch.dataset.img;
+    }
+
+    // ── Swatch active state ────────────────────────────────────────────────
+    card.querySelectorAll<HTMLButtonElement>('.swatch').forEach(s => {
+      const isActive = s.dataset.color === color;
+      s.classList.toggle('swatch--active', isActive);
+      s.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+    });
+
+    // ── Size badges ────────────────────────────────────────────────────────
+    const colorOos = !Object.values(colorMap).some(Boolean);
+    card.querySelectorAll<HTMLElement>('.size-badge').forEach(badge => {
+      const talla = badge.dataset.talla ?? '';
+      const disponible = colorMap[talla] ?? false;
+      badge.classList.toggle('size-badge--oos', !disponible);
+      badge.setAttribute('aria-label', disponible ? talla : `${talla} agotado`);
+    });
+
+    // ── Card-level OOS badge ───────────────────────────────────────────────
+    const oosBadge = card.querySelector<HTMLElement>('.product-card__oos-badge');
+    if (oosBadge) {
+      oosBadge.style.display = colorOos ? '' : 'none';
+      oosBadge.setAttribute('aria-hidden', colorOos ? 'false' : 'true');
+    }
+  }
+
+  document.querySelectorAll<HTMLElement>('.product-card').forEach(card => {
+    // Apply default color on page load
+    const defaultColor = card.dataset.defaultColor ?? '';
+    if (defaultColor) applyColor(card, defaultColor);
+
+    // Click handler for swatches
+    card.querySelectorAll<HTMLButtonElement>('.swatch').forEach(swatch => {
+      swatch.addEventListener('click', () => {
+        const color = swatch.dataset.color;
+        if (color) applyColor(card, color);
+      });
+      // Also update image on hover (non-destructive preview)
+      swatch.addEventListener('mouseenter', () => {
+        const img = card.querySelector<HTMLImageElement>('.product-card__img');
+        if (img && swatch.dataset.img) img.src = swatch.dataset.img;
+      });
+      swatch.addEventListener('mouseleave', () => {
+        // Revert to the currently active color's image
+        const active = card.querySelector<HTMLButtonElement>('.swatch--active');
+        const img = card.querySelector<HTMLImageElement>('.product-card__img');
+        if (img && active?.dataset.img) img.src = active.dataset.img;
+      });
+    });
+  });
+</script>

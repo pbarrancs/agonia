@@ -1,0 +1,296 @@
+/*
+ * global.css
+ * Brand design tokens, font imports, reset, layout, nav and footer styles.
+ * Used by Layout.astro — imported once for the entire site.
+ */
+
+/* ─── Google Fonts ─────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=New+Rocker&family=Nova+Cut&family=Syne+Mono&display=swap');
+
+/* ─── Brand colour tokens ────────────────────────────────────────────────────  */
+:root {
+  --color-titulo:    #e8431e;
+  --color-subtitulo: #f4ec62;
+  --color-cuerpo:    #fcfcfc;
+  --color-bg:        #1a1a1a;
+  --color-nav-bg:    #111111;
+  --color-nav-border:#2a2a2a;
+  --color-footer-bg: #111111;
+  --color-link:      #f4ec62;
+}
+
+/* ─── Reset ──────────────────────────────────────────────────────────────────  */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-cuerpo);
+  font-family: "Syne Mono", monospace;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: var(--color-link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ─── Brand font classes (preserved from original main.css) ──────────────────  */
+.font-titulo {
+  font-family: "New Rocker", system-ui;
+  color: var(--color-titulo);
+}
+
+.font-subtitulo {
+  font-family: "Nova Cut", system-ui;
+  color: var(--color-subtitulo);
+}
+
+.font-cuerpo {
+  font-family: "Syne Mono", monospace;
+  color: var(--color-cuerpo);
+}
+
+/* ─── Top navigation ─────────────────────────────────────────────────────────  */
+.site-nav {
+  background-color: var(--color-nav-bg);
+  border-bottom: 1px solid var(--color-nav-border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.site-nav__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.site-nav__logo img {
+  height: 42px;
+  width: auto;
+}
+
+.site-nav__links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.site-nav__links a {
+  font-family: "Syne Mono", monospace;
+  font-size: 0.85rem;
+  color: var(--color-cuerpo);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.site-nav__links a:hover {
+  color: var(--color-subtitulo);
+  text-decoration: none;
+  border-bottom-color: var(--color-subtitulo);
+}
+
+.site-nav__links a.active {
+  color: var(--color-titulo);
+  border-bottom-color: var(--color-titulo);
+}
+
+/* ─── Main content area ───────────────────────────────────────────────────────  */
+main {
+  flex: 1;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+/* ─── Page sections ───────────────────────────────────────────────────────────  */
+.page-section {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.page-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.page-section h4 {
+  font-size: 1.2rem;
+  margin-bottom: 0.6rem;
+}
+
+.page-section p {
+  max-width: 680px;
+  margin: 0 auto 1rem;
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+/* ─── Non-negotiables block ───────────────────────────────────────────────────  */
+.non-negotiable {
+  margin: 2rem auto;
+  max-width: 680px;
+  text-align: center;
+}
+
+/* ─── Footer ──────────────────────────────────────────────────────────────────  */
+.site-footer {
+  background-color: var(--color-footer-bg);
+  border-top: 1px solid var(--color-nav-border);
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+.site-footer__icons {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.site-footer__icons a {
+  font-size: 1.4rem;
+  color: var(--color-cuerpo);
+  transition: color 0.2s;
+}
+
+.site-footer__icons a:hover {
+  color: var(--color-subtitulo);
+  text-decoration: none;
+}
+
+.site-footer__links {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.site-footer__links a {
+  font-size: 0.8rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.site-footer__links a:hover {
+  color: var(--color-cuerpo);
+  text-decoration: none;
+}
+
+.site-footer__copy {
+  font-size: 0.75rem;
+  color: #555;
+}
+
+.site-footer__logo {
+  margin-bottom: 1.25rem;
+}
+
+.site-footer__logo img {
+  height: 28px;
+  width: auto;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  display: inline-block;
+}
+
+.site-footer__logo a:hover img {
+  opacity: 1;
+}
+
+/* ─── Hero (index page) ───────────────────────────────────────────────────────  */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 5rem 1.5rem;
+  gap: 2rem;
+}
+
+.hero__logo {
+  width: 260px;
+  max-width: 80vw;
+}
+
+.hero__tagline {
+  font-family: "Syne Mono", monospace;
+  color: #888;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.hero__cta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn {
+  display: inline-block;
+  font-family: "Syne Mono", monospace;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.65rem 1.5rem;
+  border: 1px solid currentColor;
+  border-radius: 2px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.btn--primary {
+  color: var(--color-titulo);
+  border-color: var(--color-titulo);
+}
+
+.btn--primary:hover {
+  background-color: var(--color-titulo);
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn--secondary {
+  color: var(--color-subtitulo);
+  border-color: var(--color-subtitulo);
+}
+
+.btn--secondary:hover {
+  background-color: var(--color-subtitulo);
+  color: #111;
+  text-decoration: none;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────────────────────  */
+@media (max-width: 600px) {
+  .site-nav__links {
+    gap: 1rem;
+  }
+
+  .site-nav__links a {
+    font-size: 0.75rem;
+  }
+
+  .page-section h1 {
+    font-size: 1.8rem;
+  }
+}
