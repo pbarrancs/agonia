@@ -220,3 +220,65 @@ button.swatch--oos:hover {
   padding: 3px 8px;
   border-radius: 2px;
 }
+
+/* ─── Catalog image — zoom cursor ─────────────────────────────────────────── */
+.product-card__img {
+  cursor: zoom-in;
+}
+
+/* ─── Lightbox ─────────────────────────────────────────────────────────────── */
+#agonia-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#agonia-lightbox[hidden] {
+  display: none;
+}
+
+#agonia-lb-backdrop {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.88);
+  cursor: pointer;
+}
+
+#agonia-lb-frame {
+  position: relative;
+  z-index: 1;
+  max-width: min(1200px, 95vw);
+  max-height: 90vh;
+}
+
+#agonia-lb-img {
+  display: block;
+  max-width: 100%;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 2px;
+}
+
+#agonia-lb-close {
+  position: absolute;
+  top: -2.25rem;
+  right: 0;
+  background: none;
+  border: none;
+  color: #fcfcfc;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0.3rem 0.6rem;
+  line-height: 1;
+  opacity: 0.6;
+  transition: opacity 0.15s;
+}
+
+#agonia-lb-close:hover,
+#agonia-lb-close:focus-visible {
+  opacity: 1;
+  outline: none;
+}

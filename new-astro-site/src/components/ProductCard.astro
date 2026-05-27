@@ -129,30 +129,77 @@ function isColorOos(color: string): boolean {
 
 <script>
   // Runs once (Astro dedupes <script> tags across cards).
-  // For each card: clicking a color swatch updates the image, marks it active,
-  // and refreshes size-badge availability from the embedded JSON map.
 
+  // ── Lightbox — created once per page load ────────────────────────────────
+  (function () {
+    if (document.getElementById('agonia-lightbox')) return;
+
+    const lb = document.createElement('div');
+    lb.id = 'agonia-lightbox';
+    lb.setAttribute('hidden', '');
+    lb.setAttribute('role', 'dialog');
+    lb.setAttribute('aria-modal', 'true');
+    lb.setAttribute('aria-label', 'Vista previa');
+    lb.innerHTML =
+      '<div id="agonia-lb-backdrop"></div>' +
+      '<div id="agonia-lb-frame">' +
+      '<button id="agonia-lb-close" type="button" aria-label="Cerrar">&#x2715;</button>' +
+      '<img id="agonia-lb-img" src="" alt="Vista previa" />' +
+      '</div>';
+    document.body.appendChild(lb);
+
+    function closeLb() {
+      lb.setAttribute('hidden', '');
+      (lb.querySelector('#agonia-lb-img') as HTMLImageElement).src = '';
+      document.body.style.overflow = '';
+    }
+
+    (lb.querySelector('#agonia-lb-backdrop') as HTMLElement).addEventListener('click', closeLb);
+    (lb.querySelector('#agonia-lb-close') as HTMLElement).addEventListener('click', closeLb);
+    document.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && !lb.hidden) closeLb();
+    });
+  })();
+
+  function openLightbox(src: string) {
+    const lb = document.getElementById('agonia-lightbox');
+    if (!lb) return;
+    (lb.querySelector('#agonia-lb-img') as HTMLImageElement).src = src;
+    lb.removeAttribute('hidden');
+    document.body.style.overflow = 'hidden';
+    lb.querySelector<HTMLButtonElement>('#agonia-lb-close')?.focus();
+  }
+
+  /** Converts a thumbnail URL to its preview counterpart. */
+  function getPreviewUrl(src: string): string | null {
+    if (!src.includes('/assets/images/playeras/')) return null;
+    return src
+      .replace('/assets/images/playeras/', '/assets/images/playeras_preview/')
+      .replace(/\.webp$/, '_preview.webp');
+  }
+
+  // ── Per-card colour/size filtering ──────────────────────────────────────
   function applyColor(card: HTMLElement, color: string) {
     const availRaw = card.dataset.avail;
     if (!availRaw) return;
     const avail: Record<string, Record<string, boolean>> = JSON.parse(availRaw);
     const colorMap = avail[color] ?? {};
 
-    // ── Image ──────────────────────────────────────────────────────────────
+    // Image
     const img = card.querySelector<HTMLImageElement>('.product-card__img');
     const activeSwatch = card.querySelector<HTMLButtonElement>(`.swatch[data-color="${CSS.escape(color)}"]`);
     if (img && activeSwatch?.dataset.img) {
       img.src = activeSwatch.dataset.img;
     }
 
-    // ── Swatch active state ────────────────────────────────────────────────
+    // Swatch active state
     card.querySelectorAll<HTMLButtonElement>('.swatch').forEach(s => {
       const isActive = s.dataset.color === color;
       s.classList.toggle('swatch--active', isActive);
       s.setAttribute('aria-pressed', isActive ? 'true' : 'false');
     });
 
-    // ── Size badges ────────────────────────────────────────────────────────
+    // Size badges
     const colorOos = !Object.values(colorMap).some(Boolean);
     card.querySelectorAll<HTMLElement>('.size-badge').forEach(badge => {
       const talla = badge.dataset.talla ?? '';
@@ -161,7 +208,7 @@ function isColorOos(color: string): boolean {
       badge.setAttribute('aria-label', disponible ? talla : `${talla} agotado`);
     });
 
-    // ── Card-level OOS badge ───────────────────────────────────────────────
+    // Card-level OOS badge
     const oosBadge = card.querySelector<HTMLElement>('.product-card__oos-badge');
     if (oosBadge) {
       oosBadge.style.display = colorOos ? '' : 'none';
@@ -170,27 +217,32 @@ function isColorOos(color: string): boolean {
   }
 
   document.querySelectorAll<HTMLElement>('.product-card').forEach(card => {
-    // Apply default color on page load
     const defaultColor = card.dataset.defaultColor ?? '';
     if (defaultColor) applyColor(card, defaultColor);
 
-    // Click handler for swatches
+    const cardImg = card.querySelector<HTMLImageElement>('.product-card__img');
+
+    // Swatch interactions
     card.querySelectorAll<HTMLButtonElement>('.swatch').forEach(swatch => {
       swatch.addEventListener('click', () => {
         const color = swatch.dataset.color;
         if (color) applyColor(card, color);
       });
-      // Also update image on hover (non-destructive preview)
       swatch.addEventListener('mouseenter', () => {
-        const img = card.querySelector<HTMLImageElement>('.product-card__img');
-        if (img && swatch.dataset.img) img.src = swatch.dataset.img;
+        if (cardImg && swatch.dataset.img) cardImg.src = swatch.dataset.img;
       });
       swatch.addEventListener('mouseleave', () => {
-        // Revert to the currently active color's image
         const active = card.querySelector<HTMLButtonElement>('.swatch--active');
-        const img = card.querySelector<HTMLImageElement>('.product-card__img');
-        if (img && active?.dataset.img) img.src = active.dataset.img;
+        if (cardImg && active?.dataset.img) cardImg.src = active.dataset.img;
       });
     });
+
+    // Lightbox on image click
+    if (cardImg) {
+      cardImg.addEventListener('click', () => {
+        const preview = getPreviewUrl(cardImg.src);
+        if (preview) openLightbox(preview);
+      });
+    }
   });
 </script>
