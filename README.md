@@ -10,6 +10,7 @@ Brand presence website for **agonia**, an independent climbing apparel collectiv
 - Catalog section headers now show only display collection names (`Fall T`, `Cadenas`, `Back Logo`, `Lágrima`) without `Diseño X` prefixes.
 - Home page section title changed from `Videos` to `Clips`.
 - Home keeps a single CTA (`Ver catálogo`) and no secondary `Nosotros` card in the hero box.
+- Entry-point behavior reverted: root `/` now loads the home page directly (no Firebase redirect to `/catalogo`), while `/catalogo` remains accessible via route and nav.
 - Nosotros page includes updated manifesto content plus a bottom dog illustration loaded from:
   `/assets/images/Ilustraciones/Perrito_03/P3_PNG_/P3_BlancoNegro_png/Perrito3_blanco_FondoOscuro.png`.
 

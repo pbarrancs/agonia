@@ -13,6 +13,7 @@ the catalog is display-only.
 - Catalog section titles use collection display names only: `Fall T`, `Cadenas`, `Back Logo`, `Lágrima`.
 - Home page media section label is `Clips` (previously `Videos`).
 - Home hero keeps only one CTA card (`Ver catálogo`); the extra `Nosotros` card was removed.
+- Entry-point behavior reverted: `/` loads the home page directly (no Firebase redirect to `/catalogo`), and `/catalogo` remains available via navigation.
 - Nosotros page now includes updated manifesto copy and a centered Perrito illustration block at the bottom.
 - Current Perrito image source:
   `/assets/images/Ilustraciones/Perrito_03/P3_PNG_/P3_BlancoNegro_png/Perrito3_blanco_FondoOscuro.png`.
