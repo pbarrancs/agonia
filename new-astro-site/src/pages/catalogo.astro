@@ -84,14 +84,14 @@ function getDisplayName(nombre: string): string {
 
 // Price lookup — keyed by modelo prefix + design number
 function getPrecio(modelo: string): string {
-  if (modelo === 'solido_1')    return '$500';
+  if (modelo === 'solido_1')    return '$450';
   if (modelo === 'deslavada_1') return '$450';
-  if (modelo === 'solido_2')    return '$450';
-  if (modelo === 'deslavada_2') return '$450';
-  if (modelo === 'top_2')       return '$450';
-  if (modelo === 'solido_3')    return '$450';
-  if (modelo === 'deslavada_3') return '$450';
-  if (modelo === 'top_3')       return '$450';
+  if (modelo === 'solido_2')    return '$350';
+  if (modelo === 'deslavada_2') return '$350';
+  if (modelo === 'top_2')       return '$350';
+  if (modelo === 'solido_3')    return '$400';
+  if (modelo === 'deslavada_3') return '$400';
+  if (modelo === 'top_3')       return '$400';
   if (modelo === 'solido_4')    return '$550';
   if (modelo.startsWith('sudadera')) return '$450';
   return '';

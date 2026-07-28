@@ -1,25 +1,25 @@
 ﻿nombre,modelo,color,talla,disponible,imagen
 Playera Sólida - Diseño 1,solido_1,Blanco,XC,false,/assets/images/playeras/solido_blanco_1.webp
-Playera Sólida - Diseño 1,solido_1,Blanco,S,false,/assets/images/playeras/solido_blanco_1.webp
-Playera Sólida - Diseño 1,solido_1,Blanco,M,true,/assets/images/playeras/solido_blanco_1.webp
-Playera Sólida - Diseño 1,solido_1,Blanco,G,false,/assets/images/playeras/solido_blanco_1.webp
+Playera Sólida - Diseño 1,solido_1,Blanco,S,true,/assets/images/playeras/solido_blanco_1.webp
+Playera Sólida - Diseño 1,solido_1,Blanco,M,false,/assets/images/playeras/solido_blanco_1.webp
+Playera Sólida - Diseño 1,solido_1,Blanco,G,true,/assets/images/playeras/solido_blanco_1.webp
 Playera Sólida - Diseño 1,solido_1,Blanco,XL,false,/assets/images/playeras/solido_blanco_1.webp
-Playera Sólida - Diseño 1,solido_1,Rosa,XC,true,/assets/images/playeras/solido_rosa_1.webp
+Playera Sólida - Diseño 1,solido_1,Rosa,XC,false,/assets/images/playeras/solido_rosa_1.webp
 Playera Sólida - Diseño 1,solido_1,Rosa,S,false,/assets/images/playeras/solido_rosa_1.webp
 Playera Sólida - Diseño 1,solido_1,Rosa,M,false,/assets/images/playeras/solido_rosa_1.webp
 Playera Sólida - Diseño 1,solido_1,Rosa,G,false,/assets/images/playeras/solido_rosa_1.webp
 Playera Sólida - Diseño 1,solido_1,Rosa,XL,false,/assets/images/playeras/solido_rosa_1.webp
-Playera Sólida - Diseño 1,solido_1,Negro,XC,true,/assets/images/playeras/solido_negro_1.webp
-Playera Sólida - Diseño 1,solido_1,Negro,S,true,/assets/images/playeras/solido_negro_1.webp
+Playera Sólida - Diseño 1,solido_1,Negro,XC,false,/assets/images/playeras/solido_negro_1.webp
+Playera Sólida - Diseño 1,solido_1,Negro,S,false,/assets/images/playeras/solido_negro_1.webp
 Playera Sólida - Diseño 1,solido_1,Negro,M,true,/assets/images/playeras/solido_negro_1.webp
 Playera Sólida - Diseño 1,solido_1,Negro,G,true,/assets/images/playeras/solido_negro_1.webp
-Playera Sólida - Diseño 1,solido_1,Negro,XL,true,/assets/images/playeras/solido_negro_1.webp
+Playera Sólida - Diseño 1,solido_1,Negro,XL,false,/assets/images/playeras/solido_negro_1.webp
 Playera Sólida - Diseño 1,solido_1,Navy,XC,false,/assets/images/playeras/solido_navy_1.webp
 Playera Sólida - Diseño 1,solido_1,Navy,S,false,/assets/images/playeras/solido_navy_1.webp
 Playera Sólida - Diseño 1,solido_1,Navy,M,false,/assets/images/playeras/solido_navy_1.webp
-Playera Sólida - Diseño 1,solido_1,Navy,G,true,/assets/images/playeras/solido_navy_1.webp
+Playera Sólida - Diseño 1,solido_1,Navy,G,false,/assets/images/playeras/solido_navy_1.webp
 Playera Sólida - Diseño 1,solido_1,Navy,XL,false,/assets/images/playeras/solido_navy_1.webp
-Playera Sólida - Diseño 1,solido_1,Carbon,XC,true,/assets/images/playeras/solido_carbon_1.webp
+Playera Sólida - Diseño 1,solido_1,Carbon,XC,false,/assets/images/playeras/solido_carbon_1.webp
 Playera Sólida - Diseño 1,solido_1,Carbon,S,true,/assets/images/playeras/solido_carbon_1.webp
 Playera Sólida - Diseño 1,solido_1,Carbon,M,true,/assets/images/playeras/solido_carbon_1.webp
 Playera Sólida - Diseño 1,solido_1,Carbon,G,true,/assets/images/playeras/solido_carbon_1.webp
@@ -31,20 +31,20 @@ Playera Deslavada - Diseño 1,deslavada_1,Morada,G,false,/assets/images/playeras
 Playera Deslavada - Diseño 1,deslavada_1,Morada,XL,false,/assets/images/playeras/deslavada_morado_1.webp
 Playera Deslavada - Diseño 1,deslavada_1,Negro,XC,true,/assets/images/playeras/deslavada_negro_1.webp
 Playera Deslavada - Diseño 1,deslavada_1,Negro,S,true,/assets/images/playeras/deslavada_negro_1.webp
-Playera Deslavada - Diseño 1,deslavada_1,Negro,M,true,/assets/images/playeras/deslavada_negro_1.webp
-Playera Deslavada - Diseño 1,deslavada_1,Negro,G,true,/assets/images/playeras/deslavada_negro_1.webp
+Playera Deslavada - Diseño 1,deslavada_1,Negro,M,false,/assets/images/playeras/deslavada_negro_1.webp
+Playera Deslavada - Diseño 1,deslavada_1,Negro,G,false,/assets/images/playeras/deslavada_negro_1.webp
 Playera Deslavada - Diseño 1,deslavada_1,Negro,XL,false,/assets/images/playeras/deslavada_negro_1.webp
 Playera Deslavada - Diseño 1,deslavada_1,Gris,XC,false,/assets/images/playeras/deslavada_gris_1.webp
-Playera Deslavada - Diseño 1,deslavada_1,Gris,S,true,/assets/images/playeras/deslavada_gris_1.webp
+Playera Deslavada - Diseño 1,deslavada_1,Gris,S,false,/assets/images/playeras/deslavada_gris_1.webp
 Playera Deslavada - Diseño 1,deslavada_1,Gris,M,false,/assets/images/playeras/deslavada_gris_1.webp
-Playera Deslavada - Diseño 1,deslavada_1,Gris,G,true,/assets/images/playeras/deslavada_gris_1.webp
+Playera Deslavada - Diseño 1,deslavada_1,Gris,G,false,/assets/images/playeras/deslavada_gris_1.webp
 Playera Deslavada - Diseño 1,deslavada_1,Gris,XL,false,/assets/images/playeras/deslavada_gris_1.webp
 Playera Sólida - Diseño 2,solido_2,Blanco,XC,true,/assets/images/playeras/solido_blanca_2.webp
 Playera Sólida - Diseño 2,solido_2,Blanco,S,true,/assets/images/playeras/solido_blanca_2.webp
 Playera Sólida - Diseño 2,solido_2,Blanco,M,true,/assets/images/playeras/solido_blanca_2.webp
-Playera Sólida - Diseño 2,solido_2,Blanco,G,true,/assets/images/playeras/solido_blanca_2.webp
+Playera Sólida - Diseño 2,solido_2,Blanco,G,false,/assets/images/playeras/solido_blanca_2.webp
 Playera Sólida - Diseño 2,solido_2,Blanco,XL,false,/assets/images/playeras/solido_blanca_2.webp
-Playera Sólida - Diseño 2,solido_2,Rosa,XC,true,/assets/images/playeras/solido_rosa_2.webp
+Playera Sólida - Diseño 2,solido_2,Rosa,XC,false,/assets/images/playeras/solido_rosa_2.webp
 Playera Sólida - Diseño 2,solido_2,Rosa,S,false,/assets/images/playeras/solido_rosa_2.webp
 Playera Sólida - Diseño 2,solido_2,Rosa,M,true,/assets/images/playeras/solido_rosa_2.webp
 Playera Sólida - Diseño 2,solido_2,Rosa,G,false,/assets/images/playeras/solido_rosa_2.webp
@@ -65,14 +65,14 @@ Playera Sólida - Diseño 2,solido_2,Carbon,M,true,/assets/images/playeras/solid
 Playera Sólida - Diseño 2,solido_2,Carbon,G,false,/assets/images/playeras/solido_carbon_2.webp
 Playera Sólida - Diseño 2,solido_2,Carbon,XL,false,/assets/images/playeras/solido_carbon_2.webp
 Playera Sólida - Diseño 2,solido_2,Aqua,XC,false,/assets/images/playeras/solido_aqua_2.webp
-Playera Sólida - Diseño 2,solido_2,Aqua,S,true,/assets/images/playeras/solido_aqua_2.webp
+Playera Sólida - Diseño 2,solido_2,Aqua,S,false,/assets/images/playeras/solido_aqua_2.webp
 Playera Sólida - Diseño 2,solido_2,Aqua,M,true,/assets/images/playeras/solido_aqua_2.webp
-Playera Sólida - Diseño 2,solido_2,Aqua,G,true,/assets/images/playeras/solido_aqua_2.webp
+Playera Sólida - Diseño 2,solido_2,Aqua,G,false,/assets/images/playeras/solido_aqua_2.webp
 Playera Sólida - Diseño 2,solido_2,Aqua,XL,false,/assets/images/playeras/solido_aqua_2.webp
 Playera Sólida - Diseño 2,solido_2,Verde,XC,false,/assets/images/playeras/solido_verde_2.webp
 Playera Sólida - Diseño 2,solido_2,Verde,S,false,/assets/images/playeras/solido_verde_2.webp
 Playera Sólida - Diseño 2,solido_2,Verde,M,true,/assets/images/playeras/solido_verde_2.webp
-Playera Sólida - Diseño 2,solido_2,Verde,G,true,/assets/images/playeras/solido_verde_2.webp
+Playera Sólida - Diseño 2,solido_2,Verde,G,false,/assets/images/playeras/solido_verde_2.webp
 Playera Sólida - Diseño 2,solido_2,Verde,XL,true,/assets/images/playeras/solido_verde_2.webp
 Playera Deslavada - Diseño 2,deslavada_2,Verde,XC,false,/assets/images/playeras/deslavada_verde_2.webp
 Playera Deslavada - Diseño 2,deslavada_2,Verde,S,true,/assets/images/playeras/deslavada_verde_2.webp
@@ -84,10 +84,10 @@ Playera Deslavada - Diseño 2,deslavada_2,Morada,S,false,/assets/images/playeras
 Playera Deslavada - Diseño 2,deslavada_2,Morada,M,true,/assets/images/playeras/deslavada_morado_2.webp
 Playera Deslavada - Diseño 2,deslavada_2,Morada,G,false,/assets/images/playeras/deslavada_morado_2.webp
 Playera Deslavada - Diseño 2,deslavada_2,Morada,XL,false,/assets/images/playeras/deslavada_morado_2.webp
-Playera Deslavada - Diseño 2,deslavada_2,Negro,XC,false,/assets/images/playeras/deslavada_negro_2.webp
+Playera Deslavada - Diseño 2,deslavada_2,Negro,XC,true,/assets/images/playeras/deslavada_negro_2.webp
 Playera Deslavada - Diseño 2,deslavada_2,Negro,S,true,/assets/images/playeras/deslavada_negro_2.webp
 Playera Deslavada - Diseño 2,deslavada_2,Negro,M,true,/assets/images/playeras/deslavada_negro_2.webp
-Playera Deslavada - Diseño 2,deslavada_2,Negro,G,true,/assets/images/playeras/deslavada_negro_2.webp
+Playera Deslavada - Diseño 2,deslavada_2,Negro,G,false,/assets/images/playeras/deslavada_negro_2.webp
 Playera Deslavada - Diseño 2,deslavada_2,Negro,XL,false,/assets/images/playeras/deslavada_negro_2.webp
 Playera Deslavada - Diseño 2,deslavada_2,Gris,XC,false,/assets/images/playeras/deslavada_gris_2.webp
 Playera Deslavada - Diseño 2,deslavada_2,Gris,S,true,/assets/images/playeras/deslavada_gris_2.webp
@@ -99,13 +99,13 @@ Top - Diseño 2,top_2,Negro,S,true,/assets/images/playeras/top_negro_2.webp
 Top - Diseño 2,top_2,Negro,M,true,/assets/images/playeras/top_negro_2.webp
 Top - Diseño 2,top_2,Negro,G,true,/assets/images/playeras/top_negro_2.webp
 Top - Diseño 2,top_2,Negro,XL,false,/assets/images/playeras/top_negro_2.webp
-Playera Deslavada - Diseño 3,deslavada_3,Verde,XC,false,/assets/images/playeras/deslavada_verde_3.webp
+Playera Deslavada - Diseño 3,deslavada_3,Verde,XC,true,/assets/images/playeras/deslavada_verde_3.webp
 Playera Deslavada - Diseño 3,deslavada_3,Verde,S,true,/assets/images/playeras/deslavada_verde_3.webp
-Playera Deslavada - Diseño 3,deslavada_3,Verde,M,true,/assets/images/playeras/deslavada_verde_3.webp
+Playera Deslavada - Diseño 3,deslavada_3,Verde,M,false,/assets/images/playeras/deslavada_verde_3.webp
 Playera Deslavada - Diseño 3,deslavada_3,Verde,G,false,/assets/images/playeras/deslavada_verde_3.webp
 Playera Deslavada - Diseño 3,deslavada_3,Verde,XL,false,/assets/images/playeras/deslavada_verde_3.webp
-Playera Deslavada - Diseño 3,deslavada_3,Morada,XC,true,/assets/images/playeras/deslavada_morado_3.webp
-Playera Deslavada - Diseño 3,deslavada_3,Morada,S,true,/assets/images/playeras/deslavada_morado_3.webp
+Playera Deslavada - Diseño 3,deslavada_3,Morada,XC,false,/assets/images/playeras/deslavada_morado_3.webp
+Playera Deslavada - Diseño 3,deslavada_3,Morada,S,false,/assets/images/playeras/deslavada_morado_3.webp
 Playera Deslavada - Diseño 3,deslavada_3,Morada,M,false,/assets/images/playeras/deslavada_morado_3.webp
 Playera Deslavada - Diseño 3,deslavada_3,Morada,G,false,/assets/images/playeras/deslavada_morado_3.webp
 Playera Deslavada - Diseño 3,deslavada_3,Morada,XL,false,/assets/images/playeras/deslavada_morado_3.webp
@@ -114,23 +114,23 @@ Playera Deslavada - Diseño 3,deslavada_3,Negro,S,true,/assets/images/playeras/d
 Playera Deslavada - Diseño 3,deslavada_3,Negro,M,true,/assets/images/playeras/deslavada_negro_3.webp
 Playera Deslavada - Diseño 3,deslavada_3,Negro,G,false,/assets/images/playeras/deslavada_negro_3.webp
 Playera Deslavada - Diseño 3,deslavada_3,Negro,XL,false,/assets/images/playeras/deslavada_negro_3.webp
-Playera Deslavada - Diseño 3,deslavada_3,Gris,XS,true,/assets/images/playeras/deslavada_gris_3.webp
+Playera Deslavada - Diseño 3,deslavada_3,Gris,XS,false,/assets/images/playeras/deslavada_gris_3.webp
 Playera Deslavada - Diseño 3,deslavada_3,Gris,S,false,/assets/images/playeras/deslavada_gris_3.webp
 Playera Deslavada - Diseño 3,deslavada_3,Gris,M,false,/assets/images/playeras/deslavada_gris_3.webp
 Playera Deslavada - Diseño 3,deslavada_3,Gris,G,false,/assets/images/playeras/deslavada_gris_3.webp
 Top - Diseño 3,top_3,Negro,XC,false,/assets/images/playeras/top_negro_3.webp
-Top - Diseño 3,top_3,Negro,S,true,/assets/images/playeras/top_negro_3.webp
-Top - Diseño 3,top_3,Negro,M,true,/assets/images/playeras/top_negro_3.webp
+Top - Diseño 3,top_3,Negro,S,false,/assets/images/playeras/top_negro_3.webp
+Top - Diseño 3,top_3,Negro,M,false,/assets/images/playeras/top_negro_3.webp
 Top - Diseño 3,top_3,Negro,G,false,/assets/images/playeras/top_negro_3.webp
 Top - Diseño 3,top_3,Negro,XL,false,/assets/images/playeras/top_negro_3.webp
-Playera Sólida - Diseño 4,solido_4,Blanco,XC,false,/assets/images/playeras/solido_blanco_4.webp
-Playera Sólida - Diseño 4,solido_4,Blanco,S,false,/assets/images/playeras/solido_blanco_4.webp
+Playera Sólida - Diseño 4,solido_4,Blanco,XC,true,/assets/images/playeras/solido_blanco_4.webp
+Playera Sólida - Diseño 4,solido_4,Blanco,S,true,/assets/images/playeras/solido_blanco_4.webp
 Playera Sólida - Diseño 4,solido_4,Blanco,M,true,/assets/images/playeras/solido_blanco_4.webp
 Playera Sólida - Diseño 4,solido_4,Blanco,G,true,/assets/images/playeras/solido_blanco_4.webp
 Playera Sólida - Diseño 4,solido_4,Blanco,XL,false,/assets/images/playeras/solido_blanco_4.webp
 Playera Sólida - Diseño 4,solido_4,Negro,XC,false,/assets/images/playeras/solido_negro_4.webp
 Playera Sólida - Diseño 4,solido_4,Negro,S,true,/assets/images/playeras/solido_negro_4.webp
-Playera Sólida - Diseño 4,solido_4,Negro,M,false,/assets/images/playeras/solido_negro_4.webp
+Playera Sólida - Diseño 4,solido_4,Negro,M,true,/assets/images/playeras/solido_negro_4.webp
 Playera Sólida - Diseño 4,solido_4,Negro,G,true,/assets/images/playeras/solido_negro_4.webp
 Playera Sólida - Diseño 4,solido_4,Negro,XL,false,/assets/images/playeras/solido_negro_4.webp
 Playera Sólida - Diseño 4,solido_4,Carbon,XC,false,/assets/images/playeras/solido_carbon_4.webp

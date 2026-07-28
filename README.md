@@ -4,8 +4,11 @@ Brand presence website for **agonia**, an independent climbing apparel collectiv
 
 > No e-commerce. Display-only catalog. Static site deployed to Firebase Hosting.
 
-## Latest Updates (2026-05-27)
+## Latest Updates (2026-07-28)
 
+- Inventory availability now comes from the workbook itself: missing values are normalized to zero, and Stock is derived as Unidades - Vendidas.
+- The catalog sync logic reads the workbook as the source of truth, so the site can use the Excel file directly to mark products as available or sold out.
+- The old fix-inventory step is no longer required; the normalization happens inside the existing sync scripts.
 - Catalog card product names are mapped in UI to brand display names (for example: `Fall T Sólida`, `Cadenas Deslavada`, `Top Back Logo`) without editing `productos.csv`.
 - Catalog section headers now show only display collection names (`Fall T`, `Cadenas`, `Back Logo`, `Lágrima`) without `Diseño X` prefixes.
 - Home page section title changed from `Videos` to `Clips`.
@@ -89,6 +92,7 @@ agonia/
 ├── firebase.json                  # Firebase Hosting config — serves new-astro-site/dist/
 ├── .firebaserc                    # Firebase project alias (agonia-255fe)
 ├── .gitignore
+├── inventario_agonia.xlsx         # Source of truth for stock availability
 ├── new-astro-site/                # Astro project — the live site
 │   ├── package.json
 │   ├── astro.config.mjs           # output: 'static'
@@ -102,7 +106,7 @@ agonia/
 │   │   │   └── playeras_preview/  # 29 preview photos (WebP, 1200×724)
 │   │   └── webfonts/              # Font Awesome font files
 │   └── src/
-│       ├── data/productos.csv     # 144-row product source of truth
+│       ├── data/productos.csv     # 144-row product source of truth for the catalog
 │       ├── layouts/Layout.astro   # Base HTML shell
 │       ├── components/
 │       │   ├── Nav.astro
@@ -117,13 +121,29 @@ agonia/
 │           ├── global.css
 │           └── catalog.css
 ├── scripts/
+│   ├── inventory_utils.py         # Normalizes the workbook and updates CSV availability
 │   ├── process_ventas.py          # Sales data → ventas.csv + inventory update
-│   ├── sync_oos.py                # Inventory → productos.csv disponible field
+│   ├── sync_oos.py                # Workbook → productos.csv availability sync
 │   └── convert_webp.py            # Converts product PNGs → WebP thumbnails + previews
 └── public/                        # Old static site — backup only (remove after 2026-06-02)
 ```
 
 ---
+
+## Inventory flow
+
+The workbook is now the source of truth for availability:
+
+1. The inventory workbook is normalized so that missing values become `0` and a derived `Stock` column is computed as `Unidades - Vendidas`.
+2. The sync scripts read that workbook directly and update `productos.csv` so the site can mark each product as available or sold out.
+3. The old fix-inventory step is no longer needed; its logic now lives inside the existing scripts.
+4. The old `ventas.csv` flow is deprecated. When a sale happens, update the relevant row directly in `inventario_agonia.xlsx`.
+
+Run this command after changing inventory data:
+
+```bash
+python scripts/sync_oos.py
+```
 
 ## Configuration
 

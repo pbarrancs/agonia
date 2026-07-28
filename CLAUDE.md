@@ -7,8 +7,11 @@ based in Mexico. The site communicates the brand's identity, mission, and values
 to the climbing and outdoor community. There is no e-commerce or purchasing flow —
 the catalog is display-only.
 
-## Latest Updates (2026-05-27)
+## Latest Updates (2026-07-28)
 
+- Inventory availability now comes from the workbook itself: missing values are normalized to `0`, and `Stock` is derived as `Unidades - Vendidas`.
+- The catalog sync logic reads `inventario_agonia.xlsx` as the source of truth, so the site can use the Excel file directly to mark products as available or sold out.
+- The old `fix_inventario.py` step is no longer required; its normalization logic now runs inside the existing sync scripts.
 - Catalog card headings use UI-level display-name mapping (no manual edits to `productos.csv`).
 - Catalog section titles use collection display names only: `Fall T`, `Cadenas`, `Back Logo`, `Lágrima`.
 - Home page media section label is `Clips` (previously `Videos`).
@@ -107,12 +110,13 @@ agonia/                                   ← repo root
 ├── public/                               ← OLD static site — kept as backup until 2026-06-02
 │   └── index.html                        ← do not delete before 2026-06-02
 ├── scripts/
-│   ├── process_ventas.py                 ← parses raw sales data → ventas.csv + inventory update
+│   ├── create_excel.py                   ← rebuilds inventario_agonia.xlsx from the markdown inventory table; safe by default and does not overwrite the workbook unless `--force` is passed
+│   ├── process_ventas.py                 ← compatibility stub; inventory updates now happen directly in the workbook
 │   ├── sync_oos.py                       ← syncs inventory → productos.csv disponible field
 │   ├── convert_mod.py                    ← video conversion (not web-related)
 │   └── convert_mts.py                    ← video conversion (not web-related)
-├── ventas.csv                            ← 65-row sales log (normalized)
-├── inventario_agonia.xlsx                ← physical inventory with Vendidas column
+├── ventas.csv                            ← legacy sales log; deprecated in the active workflow
+├── inventario_agonia.xlsx                ← source of truth for stock; update this file directly when a sale happens
 └── Documentos/                           ← brand docs, drafts, inventory — not web-related
 ```
 
@@ -132,13 +136,22 @@ agonia/                                   ← repo root
 
 `productos.csv` is the canonical product source. Two Python scripts maintain it:
 
-1. **`scripts/process_ventas.py`** — reads raw sales data, writes `ventas.csv`, updates
-   `Vendidas` column in `inventario_agonia.xlsx`.
-2. **`scripts/sync_oos.py`** — reads `inventario_agonia.xlsx`, updates `disponible` field
-   in `productos.csv`. Has `CSV_COLOR_ALIAS = {'Morada': 'Morado'}` to bridge the color
-   name difference between the CSV (`Morada`) and the Excel file (`Morado`).
+1. **`scripts/process_ventas.py`** — retained only as a compatibility stub; the workflow now
+   updates inventory directly in `inventario_agonia.xlsx`.
+2. **`scripts/sync_oos.py`** — normalizes `inventario_agonia.xlsx` (fills missing values with
+   `0`, computes `Stock = Unidades - Vendidas`) and updates `disponible` in `productos.csv`.
+   It also uses `CSV_COLOR_ALIAS = {'Morada': 'Morado'}` to bridge the color name difference
+   between the CSV (`Morada`) and the Excel file (`Morado`).
+3. **`scripts/create_excel.py`** — rebuilds `inventario_agonia.xlsx` from the markdown inventory
+   table in `Documentos/playeras/detalles_agonia_playeras.md`. It is a backup/helper utility for
+   reconstructing the workbook from the documented inventory source, not a regular inventory-editing
+   tool. By default it does not overwrite an existing workbook; use
+   `python scripts/create_excel.py --force` only when you intentionally want to replace it.
 
-Run both scripts after any inventory change, then rebuild and deploy.
+> Disclaimer: do not use this script as part of the normal sales workflow. It is not meant to
+> edit inventory counts day to day, and it should not be run unless you explicitly want to
+> reconstruct or reset the workbook from the markdown source.
+> Run `scripts/sync_oos.py` after any inventory change, then rebuild and deploy.
 
 ---
 
@@ -166,8 +179,8 @@ Run both scripts after any inventory change, then rebuild and deploy.
 
 - `public/index.html` — backup only; do not touch
 - `.firebaserc` — never modify
-- `new-astro-site/src/data/productos.csv` — only modified by `sync_oos.py`; do not hand-edit
-- `inventario_agonia.xlsx` — physical inventory; only modified by `process_ventas.py`
+- `new-astro-site/src/data/productos.csv` — updated by the sync scripts; do not hand-edit
+- `inventario_agonia.xlsx` — source of truth for availability; update this file directly when a sale happens
 
 ### Technical constraints
 
@@ -178,6 +191,8 @@ Run both scripts after any inventory change, then rebuild and deploy.
 - **Content:** Do not invent text — read from actual files and data sources only
 - **CSV parsing:** `import rawCsv from '../data/productos.csv?raw'` + manual split in
   Astro frontmatter at build time — no external CSV parsing npm packages
+- **Catalog prices:** Product prices are configured in `new-astro-site/src/pages/catalogo.astro`
+  inside the `getPrecio()` lookup, not in `productos.csv`.
 
 ### Naming conventions observed in the project
 
@@ -245,9 +260,7 @@ public/
 
 ---
 
-## Upcoming Tasks
+## Current status
 
-- [ ] **Inventory update flow:** refactor `ventas.csv` to mirror the structure of
-      `inventario_agonia.xlsx` so that updating inventory from sales data is more
-      transparent and straightforward. The goal is a single simple process to keep
-      stock counts accurate after each sale.
+- [x] **Inventory update flow:** the workbook is now the single source of truth for stock and availability. When a sale happens, update the relevant row directly in `inventario_agonia.xlsx` and run `scripts/sync_oos.py` to refresh `productos.csv`.
+- [x] **Legacy sales-table workflow:** the active inventory process no longer depends on `ventas.csv`.
